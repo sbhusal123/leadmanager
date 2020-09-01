@@ -1,0 +1,8 @@
+.vscode/
+.idle/
+
+env/
+venv/
+node_modules/
+
+*.pyc
