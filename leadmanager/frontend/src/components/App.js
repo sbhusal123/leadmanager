@@ -26,7 +26,6 @@ const alertOptions = {
 class App extends Component{
 
     componentDidMount(){
-        console.log("mounting");
         store.dispatch(loadUser());
     }
 
