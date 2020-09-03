@@ -15,6 +15,8 @@ export class Alerts extends Component {
     componentDidUpdate(prevProps){
         const { error, alert, message } = this.props;
         if(error !== prevProps.error){
+
+            // Registration Error
             if(error.msg.name){
                 alert.error(`Name: ${error.msg.name.join()}`);
             }
@@ -23,7 +25,20 @@ export class Alerts extends Component {
             }
             if(error.msg.message){
                 alert.error(`Message: ${error.msg.message.join()}`);
-            }                        
+            }
+            
+            // Login Error
+            if(error.msg.username){
+                alert.error(`Username: ${error.msg.username.join()}`);
+            }            
+            if(error.msg.password){
+                alert.error(`Password: ${error.msg.password.join()}`);
+            }                                    
+
+            // Empty field errors
+            if(error.msg.non_field_errors){
+                alert.error(error.msg.non_field_errors.join());
+            }            
         }
         if(message !== prevProps.message){
             if(message.deleteLead){
@@ -31,8 +46,14 @@ export class Alerts extends Component {
             }
             if(message.addLead){
                 alert.success(message.addLead);
-            }            
+            }
+
+            if(message.passwordsNotMatch){
+                alert.error(message.passwordsNotMatch);
+            }
         }
+
+
     }
 
     render(){
